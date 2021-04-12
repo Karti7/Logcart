@@ -1,0 +1,14 @@
+.productscategory {
+  height: 100%;
+  .wrap {
+    height: 100%;
+    .item {
+      width: 50%;
+      height: 100%;
+      float: left;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+}

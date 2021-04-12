@@ -1,8 +1,16 @@
+import React from 'react';
+import './default.scss';
+import Header from'./components/Header'; 
+import HomePage from './pages/HomePage/index.js';
+
 
 function App() {
-  return (
-    <div>
-      <h1>Welcome to logcart</h1>
+  return (  
+    <div className="App">
+      <Header />
+      <div className="main">
+        <HomePage />
+      </div>
     </div>
   );
 }
