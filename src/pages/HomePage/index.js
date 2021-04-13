@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductCateory from '../../components/Category';
-import './styles.scss'
+import './styles.scss';
+
 
 const HomePage = props =>{
     return(
