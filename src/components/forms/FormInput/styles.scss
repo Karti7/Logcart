@@ -1,0 +1,38 @@
+.btn{
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 200;
+    text-transform: uppercase;
+    color: white;
+    background:black;
+    padding: 10px 0px;
+    margin: 10px 0px ;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+
+    &:hover{
+        background-color: rgb(85, 180, 157);
+    }
+
+}
+
+
+.formRow{
+        .formInput{
+              display: block;
+              width: 100%;
+              font-size: 15px;
+              line-height: 1;
+              font-weight: 300;
+              text-align: left;
+              padding: 10px 5px;
+              margin: 10px auto;
+              border: 1px solid #9e9e9e;
+              outline: none;
+
+        }
+}
