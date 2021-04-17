@@ -8,6 +8,9 @@ import React, { Component } from 'react';
 
 import FormInput from './../forms/FormInput';
 
+import AuthWrapper from './../AuthWrapper';
+import { Link } from 'react-router-dom';
+
 const initialState = {
     email: '',
     password: ''
@@ -44,10 +47,11 @@ class SignIn extends Component {
     }
     render() {
         const { email, password } = this.state;
+        const configAuthWrapper = {
+                headline : 'Sign In'
+        }
         return (
-            <div className="singin">
-                <div className="wrap">
-                    <h2>Singin</h2>
+                <AuthWrapper {...configAuthWrapper}>
 
                     <div className="formWrap">
                         <form onSubmit={this.handelSubmit}>
@@ -85,12 +89,14 @@ class SignIn extends Component {
                                         Login with Facebook
                                     </Button>
                                 </div>
+                                <div className="links">
+                                    <Link to="/recovery">Forgot Password</Link>
+                                </div>
                             </div>
                         </form>
                     </div>
-                </div>
-
-            </div>
+                 </AuthWrapper>
+                
         )
     }
 

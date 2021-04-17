@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import './styles.scss';
 import FormInput from './../forms/FormInput';
 
-import {auth, firestore, handleUserProfile} from './../../firebase/utlis';
+import { auth, firestore, handleUserProfile } from './../../firebase/utlis';
+import AuthWrapper from '../AuthWrapper';
 
 const initialState = {
     displayName: '',
     email: '',
     password: '',
     reEnterPassword: '',
-    errors:[]
+    errors: []
 }
 
 export default class Signup extends Component {
@@ -30,45 +31,45 @@ export default class Signup extends Component {
         })
     }
 
-    handelFormSubmit = async event =>{
+    handelFormSubmit = async event => {
         event.preventDefault();
-        const{displayName,email,password,reEnterPassword} = this.state;
+        const { displayName, email, password, reEnterPassword } = this.state;
 
         //password validation
-        if(password != reEnterPassword){
+        if (password != reEnterPassword) {
             const err = ['password doesnot match...!'];
             this.setState({
-                errors:err
+                errors: err
             });
             return;
         }
 
         //FullName validation
-        if(displayName == ''){
+        if (displayName == '') {
             const err = ['FullName should not be empty...!'];
             this.setState({
-                errors:err
+                errors: err
             });
             return;
         }
 
         //Email validation
-        if(email == ''){
+        if (email == '') {
             const err = ['Enter valid Email ID...!'];
             this.setState({
-                errors:err
+                errors: err
             });
             return;
         }
 
 
-        try{
-            const {user} = await auth.createUserWithEmailAndPassword(email,password);
-            await handleUserProfile (user,{displayName});
+        try {
+            const { user } = await auth.createUserWithEmailAndPassword(email, password);
+            await handleUserProfile(user, { displayName });
 
-            this.setState({...initialState});
+            this.setState({ ...initialState });
 
-        }catch(err){
+        } catch (err) {
             console.log(err);
         }
     }
@@ -78,66 +79,67 @@ export default class Signup extends Component {
     render() {
 
         const { displayName, email, password, reEnterpassword, errors } = this.state;
+        const configAuthWrapper = {
+            headline : 'Register'
+    }
 
         return (
-            <div className="signup">
-                <div className="wrap">
-                    <h2>Sign Up </h2>
+            <AuthWrapper {...configAuthWrapper}>
 
-                        {errors.length >0 && (
-                            <ul>
-                                {errors.map((err, index)=>{
-                                    return(
-                                        <li key="index">
-                                            {err}
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        )}
-                    <div className="formWrap">
+                <div className="formWrap">
+                    {errors.length > 0 && (
+                        <ul>
+                            {errors.map((err, index) => {
+                                return (
+                                    <li key="index">
+                                        {err}
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    )}
 
-                        <form onSubmit={this.handelFormSubmit}>
-                            <FormInput
-                                type="text"
-                                name="displayName"
-                                value={displayName}
-                                placeholder="Full Name"
-                                onChange={this.handelChange}
-                            />
+                    <form onSubmit={this.handelFormSubmit}>
+                        <FormInput
+                            type="text"
+                            name="displayName"
+                            value={displayName}
+                            placeholder="Full Name"
+                            onChange={this.handelChange}
+                        />
 
-                            <FormInput
-                                type="email"
-                                name="email"
-                                value={email}
-                                placeholder="Email Adderss"
-                                onChange={this.handelChange}
-                            />
+                        <FormInput
+                            type="email"
+                            name="email"
+                            value={email}
+                            placeholder="Email Adderss"
+                            onChange={this.handelChange}
+                        />
 
-                            <FormInput
-                                type="password"
-                                name="password"
-                                value={password}
-                                placeholder="Password"
-                                onChange={this.handelChange}
-                            />
+                        <FormInput
+                            type="password"
+                            name="password"
+                            value={password}
+                            placeholder="Password"
+                            onChange={this.handelChange}
+                        />
 
-                            <FormInput
-                                type="password"
-                                name="reEnterPassword"
-                                value={reEnterpassword}
-                                placeholder="ReEnter Password"
-                                onChange={this.handelChange}
-                            />
+                        <FormInput
+                            type="password"
+                            name="reEnterPassword"
+                            value={reEnterpassword}
+                            placeholder="ReEnter Password"
+                            onChange={this.handelChange}
+                        />
 
-                            <button className="btn ">Register</button>
-                        </form>
+                        <button className="btn ">Register</button>
+                    </form>
 
-                    </div>
+                </div>
 
-                </div> 
+            </AuthWrapper>
 
-            </div>
+
         );
     }
 }

@@ -1,29 +1,4 @@
-.singin {
-  display: block;
-  width: 100%;
-  max-width: 400px;
-  margin: 40px auto 60px;
-  border: 1px solid black;
-  margin-top: 15px;
-
-  .wrap {
-    margin-top: 10px;
-    padding: 0 10px;
-    
-
-    h2 {
-      font-size: 25px;
-      line-height: 1;
-      font-weight: 400;
-      text-transform: uppercase;
-      text-align: center;
-      display: block;
-      width: 100%;
-      padding: 0;
-      margin: 0 auto;
-    }
-
-    .formWrap{
+   .formWrap{
       margin-top: 30px;
         .socialSingin{
           margin-top: 30px;
@@ -33,5 +8,11 @@
       margin-right: 12px;
       margin-top: 1px;
     }
-  }
-}
+ .links{
+   display: block;
+   width: 100%;
+   margin: 15px auto 0;
+   a{
+     color: black;
+   }
+ }

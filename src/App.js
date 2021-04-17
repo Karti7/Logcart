@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 
 import { auth, handleUserProfile } from './firebase/utlis';
+import Recovery from './pages/Recovery';
 
 const initialState = {
   currentUser: null
@@ -63,6 +64,7 @@ class App extends Component {
             )}
             <Route exact path="/login" component={Login} />
             <Route exact path="/registration" component={Registration} />
+            <Route exact path="/recovery" component={Recovery} />
 
           </Switch>
         </div>
